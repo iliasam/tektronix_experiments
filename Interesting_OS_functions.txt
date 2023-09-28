@@ -1,0 +1,52 @@
+Firmware RAM start: 0x05001000
+
+RAM used in _dsySplashScreen:
+0x08020000
+0x08030000
+0x08040000
+0x08050000
+
+RAM regions:
+0x075e9000 - Vect0
+0x075ea000 - Vect1
+0x08000000 - Wfm0Mem ?
+0x08020000 - TextPlane?
+0x08070000 - BitBltMem? - start is configuration reg?
+
+_pokeDiag is using 0x08070000
+
+------------------------------
+Functions
+
+_ringBell() - produce bell sound
+_fpDiagLedSet(1,1) - switch LED, ((CH1, ON)
+
+_fpAllLedOn() - switch all LEDs to ON
+_fpDiagLedBellOperate(1) - test, LEDs are blinking
+
+_forceTrigger() - force oscilloscope trigger system, working
+_dsyDiagFillTextPlane(0,0); - clear screen
+_textGrid8x10() - draw test image
+_dsyTextGridPat8x6()  - draw test image
+_dsyTextGridPat12x16  - draw test image
+_resolutionPatch1(100,100) - darw test image
+_testPattern() - draw test image
+_dsySplashScreen() - partially, ruin work
+_dsyWhiteBoxPattern() - partially, ruin work
+_dsyDiagCirclePattern()  - partially, ruin work
+_dsyFullGreenPattern() - give real green at VGA
+uVar1 = _millisecondsToTicks(10);  - ok
+_taskDelay(uVar1);  - delay, RTOS can switch tasks here
+
+_horzLine(short lineX1,short lineY2,short length,char line_pattern) - draw horizontal line
+_vertLine(short line_x,short line_y1,short length, uint8_t mask)  - draw vertical line
+_pokeDiag(uint16_t lineX1,short lineY1,short lineX2,short lineY2) - draw diagonal line
+_dsyDiagFillTextPlane(0,0) - clear text, grid
+_clearDisplay() - clear waveform
+_initFullColorPalettes(100,100); - switch palette to color, VGA image get color
+
+_GpibInput() - send GPIB command
+_tickGet() - return OS ticks
+
+_vxRecallBmpFromFile("fd0:/TEST_IMG.BMP") - designed to load BMP and show it, but it has corrupted NVRAM in my case!
+
