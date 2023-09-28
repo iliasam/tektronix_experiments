@@ -1,0 +1,233 @@
+"# This started out as the configSpec for the hughe_vu and was stored
+# in the file buildTDS/configSpec. It is now for orca_vu.
+#
+#  MC68040 CPU's
+#   THIS CONFIGSPEC DEFAULTS FOR THE 040 
+#   Search for 020 in this file to find changes necessary to build for
+#   020 hardware.  You'll need a make in buildTDS before downloading.
+#
+# To pick up the original, do 'ct setcs configSpec' in the buildTDS
+# directory.  To change your view's config spec, do 'ct edcs'.
+#
+# To change this configSpec to be used with Hughe HW, see the comment
+# near the bottom of the file for the lines which should be commented out.
+
+ 
+element * CHECKEDOUT
+
+# Always look at latest configSpec so it's easy to update after
+# the integration build
+#element /vobs/dpl/commands2/smalltalk/image.src /main/orca/LATEST
+element /vobs/dpl/commands2/smalltalk/romSpec.swp /main/orca/LATEST
+element /vobs/dpl/buildTDS/configSpec /main/orca/LATEST
+#element /vobs/dpl/commands2/smalltalk/swps/scopeStateLibrarian.swp /main/hughe/LATEST
+ 
+# A few overrides for this week's build
+#\tUse underrides (below) instead of putting stuff here
+# end overrides
+
+# Include list of checked-in files you still want to see
+# before next week's build.
+include /vobs/dpl/buildTDS/personalConfigSpec
+
+#---------------------------------------------------------------------------------
+#time 22-Sep-98.16:00
+#removing splash screen from memory
+element /vobs/dpl/buildTDS/romBuild/src/scopeExec.c /main/columbia/orca/4
+# demux collision - from Monty Goodson
+element /vobs/dpl/classes1/applications/Scope-Timebase/ClydeDigHwSupervisor/src/digPhaseCal.c /main/22
+element /vobs/dpl/classes1/applications/Scope-Timebase/ClydeDigHwSupervisor/src /main/9
+element /vobs/dpl/classes1/applications/Scope-Timebase/ClydeDigHwSupervisor/src/abortFix.c /main/7
+element /vobs/dpl/classes1/applications/Scope-Timebase/ClydeDigHwSupervisor/lib/makeLocal /main/clyde/orca/3
+# for applications to run on SanDisks - from John Calvin
+element /vobs/dpl/buildTDS/romBuild/object/vxWorks_res_ram.o /main/44
+element /vobs/dpl/buildTDS/romBuild/object/vxWorks_res_rom.o /main/30
+
+#---------------------------------------------------------------------------------
+#time 14-Sep-98.10:00
+element /vobs/dpl/commands2/smalltalk/image.src /main/orca/96
+# CSEdb21014 Free Disc Space
+element /vobs/dpl/classes1/applications/Scope-VxFileSystem/VxFileSystemMgr/src/vxFileSystemMgrPublic.c /main/6
+element /vobs/dpl/classes1/applications/Scope-VxFileSystem/VxFileSystemMgr/src/vxFileSystemMgrPrims.c /main/11
+# for the SanDisc timeout delay - from John Calvin
+element /vobs/dpl/buildTDS/romBuild/object/vxWorks_res_ram.o /main/28
+element /vobs/dpl/buildTDS/romBuild/object/vxWorks_res_rom.o /main/26
+
+#---------------------------------------------------------------------------------
+#time 31-Jul-98.11:30
+element /vobs/dpl/commands2/smalltalk/image.src /main/orca/95
+#varigain code
+element /vobs/dpl/classes1/includes /main/18
+element /vobs/dpl/classes1/includes/calSanityChecks.h  /main/1
+element /vobs/dpl/classes1/grammarMasters/src/backdoor.ggen /main/11
+element /vobs/dpl/classes1/grammarMasters/src/Aplatform.defns.ggen /main/50
+element /vobs/dpl/classes1/applications/Scope-ExternalCommandProcessing/ParserReceiver/lib/makeLocal /main/columbia/5
+element /vobs/dpl/classes1/applications/Scope-ExternalCommandProcessing/ParserReceiver/src /main/11
+element /vobs/dpl/classes1/applications/Scope-ExternalCommandProcessing/ParserReceiver/src/calSanityGPIB.c /main/1
+element /vobs/dpl/classes1/applications/Scope-SignalPath/VertAttainer/src/sigpath.c /main/columbia/orca/15
+element /vobs/dpl/classes1/applications/Scope-SignalPath/VertAttainer/src/varigainStage.c /main/orca/3
+element /vobs/dpl/classes1/applications/Scope-SignalPath/VertAttainer/src/calVarigain.c /main/orca/6
+element /vobs/dpl/classes1/applications/Scope-SignalPath/VertAttainer/src/allVertPublic.c /main/orca/13
+element /vobs/dpl/classes1/applications/Scope-SignalPath/VertAttainer/src/allVertPrivate.c /main/orca/4
+element /vobs/dpl/classes1/applications/Scope-SignalPath/VertAttainer/src/allBalance.c /main/5
+element /vobs/dpl/classes1/applications/Scope-SignalPath/VertAttainer/inc/familyPath.h /main/orca/4
+element /vobs/dpl/classes1/applications/Scope-SignalPath/VertAttainer/inc  /main/10
+
+#these are changes for the san disc type 3 and CSEdb20504 and Fujitsu disk drive
+element /vobs/dpl/buildTDS/romBuild/object/vxWorks_res_ram.o /main/26
+element /vobs/dpl/classes1/applications/Scope-VxFileSystem/VxFileSystemMgr/src/vxFileSystemMgrPrims.c /main/10
+element /vobs/dpl/vxworks5.2/config/hughe/tds_bsp/vxWorks_res_ram.o /main/15
+element /vobs/dpl/vxworks5.2/config/hughe/tds_inc/pcmciaCirrus.h /main/2
+
+# John Calvin's fix for CSEdb17620 for gpib/apps connection.
+element /vobs/dpl/classes1/applications/Scope-ExternalCommandProcessing/ParserReceiver/src/events.c /main/8
+
+# Power On lockup fix
+element /vobs/dpl/buildTDS/romBuild/src scopeExec.c@@/main/columbia/orca/3
+
+#new mask SMPTE 1.485
+element /vobs/dpl/classes1/idMasters/src/master.id /main/33
+#element /vobs/dpl/classes1/grammarMasters/src/Aplatform.defns.ggen /main/49
+element /vobs/dpl/classes1/grammarMasters/src/trigger.ggen /main/28
+element /vobs/dpl/classes1/grammarMasters/src/mask.ggen /main/17
+element /vobs/dpl/classes1/applications/Masks/MaskManager/src/stan_mask_gen.input /main/14
+element /vobs/dpl/classes1/applications/Masks/MaskManager/inc/stan_mask.h /main/4
+element /vobs/dpl/classes1/applications/Scope-HwAccountant/HwAccountant/src/hwDetectPrims.c /main/5
+element /vobs/dpl/commands2/smalltalk/fileIns/maskVideoNodes.fi /main/4
+element /vobs/dpl/commands2/smalltalk/fileIns/maskUtilities.fi /main/orca/3
+element /vobs/dpl/commands2/smalltalk/fileIns/triggerUtilities.fi /main/11
+element /vobs/dpl/commands2/smalltalk/fileIns/triggerNrzNodes.fi /main/7
+
+#new helptext
+#fixes for new mask, 2 keys that were missing from the addition of the debug menu
+element /vobs/dpl/commands2/smalltalk/fileIns/help.fi /main/orca/16
+element /vobs/dpl/buildTDS/build/helpText.o /main/orca/26
+
+#---------------------------------------------------------------------------------
+#time 22-Jun-98.12:30
+# fix for flicker on mono persistence 
+#element /vobs/dpl/commands2/smalltalk/image.src /main/orca/91
+# also included is the smalltalk app: InstaVuControlAndDisplay 1.23
+element /vobs/dpl/commands2/smalltalk/fileIns/help.fi /main/orca/15
+element /vobs/dpl/commands2/smalltalk/fileIns/aemNodes.fi /main/orca/8
+element /vobs/dpl/buildTDS/build/helpText.o /main/orca/25
+
+#this file is a correction for a compile error not related to the flicker problem
+element /vobs/dpl/classes1/applications/Scope-Acquisitions/ColumbiaAcqManager/lib/makeLocal /main/clyde/orca/21
+
+#---------------------------------------------------------------------------------
+
+# Deal with checkins and @@/.../orcas that have no turn-in sheets: avoid them.
+
+
+# Underrides that are 'permanent':
+
+# to NOT run from RAM in Orca:
+#element /vobs/dpl/classes1/includes/AAconfig.h /main/orca/4
+#element /vobs/dpl/buildTDS/romBuild/object/Makefile.class /main/columbia_040/17
+#\tFor Horca:
+#element /vobs/dpl/classes1/includes/AAconfig.h /main/hughe/2
+#element /vobs/dpl/buildTDS/romBuild/object/Makefile.class /main/columbia_040/17
+
+# paulkr Update to latest released lorena released version.
+#\tHughe version was empty. It should be ifdef'ed out from
+#\tother intruments.
+element /vobs/dpl/classes1/applications/Networks-Schedulers/Scheduler/src/scrounge_d1d2.asm /main/0
+
+# Underrides that change with each build:
+# Orca, o30apr98.4e - mikemo
+
+element /vobs/dpl/classes1/applications/Scope-Acquisitions/ColumbiaAcqManager/src/instaVuAcqMove.tc /main/15
+
+# Orca, o30apr98.3e - mikemo
+
+element /vobs/dpl/buildTDS/romBuild/object/vxWorks_res_ram.o /main/21
+element /vobs/dpl/classes1/applications/Scope-Acquisitions/ColumbiaAcqManager/src/instaVuAcqMove.tc /main/14
+element /vobs/dpl/classes1/applications/Scope-Acquisitions/ColumbiaAcqManager/src/instaVuAcqProducer.tc /main/27
+
+# Orca, o30apr98.2e - mikemo
+
+element /vobs/dpl/classes1/applications/Scope-Timebase/ClydeDigHwSupervisor/src/digPublicCmds.c /main/orca/9
+element /vobs/dpl/classes1/applications/Scope-Acquisitions/ColumbiaAcqManager/src/instaVuAcqProducer.tc /main/26
+element /vobs/dpl/classes1/applications/Scope-Acquisitions/ColumbiaAcqManager/inc/tablesForTimeScale.h /main/orca/28
+element /vobs/dpl/classes1/applications/Scope-Acquisitions/ColumbiaAcqManager/inc/etMaxPix.339 /main/6
+element /vobs/dpl/classes1/applications/Scope-Acquisitions/ColumbiaAcqManager/inc/etTimeScale.339 /main/orca/11
+element /vobs/dpl/classes1/applications/Scope-Acquisitions/ColumbiaAcqManager/src/instaVuAcqSys.c /main/82
+
+# Orca, o30apr98.1e - mikemo
+element /vobs/dpl/classes1/applications/Scope-Acquisitions/ColumbiaAcqManager/src/instaVuDsp.c /main/10
+element /vobs/dpl/buildTDS/romBuild/object/vxWorks_res_ram.o /main/20
+element /vobs/dpl/buildTDS/romBuild/object/vxWorks_res_rom.o /main/24
+element /vobs/dpl/classes1/applications/Scope-Acquisitions/ColumbiaAcqManager/inc/instaVuBufSizeDrateTables.h /main/23
+
+# Orca, o30apr98.1e
+# danielt 
+element /vobs/dpl/classes1/applications/Scope-DisplayGraphics/ColorDisplayHwSupervisor/src/splashImage.bmp /main/orca/9
+# rolf (Fix for CSEdb18311 blurry boxes)
+element /vobs/dpl/classes1/applications/Scope-Acquisitions/ColumbiaAcqManager/src/instaVuAcqProducer.tc /main/25
+
+# Orca, o28apr98.4e (see README file in clyde/romo28apr98.3e)
+# rolf (blank bogus acqs when Image array active):
+element /vobs/dpl/classes1/applications/Scope-Acquisitions/ColumbiaAcqManager/src/instaVuAcqMove.tc /main/13
+# Underrides^
+
+# Determine what LATEST means for rest of file
+time  30-Apr-98.10:00
+#time 02-... if the date is 1..9
+
+# These files should always be used off of the Columbia branch, not the Hughe branch
+element /vobs/dpl/classes1/applications/Scope-Waveforms/MathWaveform/src/invParRead.asm /main/columbia/LATEST
+element /vobs/dpl/classes1/applications/Scope-Waveforms/MathWaveform/src/integrateTrap.asm /main/columbia/LATEST
+element /vobs/dpl/classes1/applications/Scope-Waveforms/MathWaveform/src/derivative.asm /main/columbia/LATEST
+ 
+
+# grammarMasters, ParserReceiver, and GpibDriver need to stay on the main branch
+element -dir /vobs/dpl/classes1/grammarMasters /main/LATEST
+element /vobs/dpl/classes1/grammarMasters/... /main/LATEST
+element /vobs/dpl/classes1/applications/Scope-ExternalCommandProcessing/GpibDriver/... /main/LATEST
+
+# Certain other files & directories are not allowed to branch off main
+# except flashJumpTableRoutineList which is product specific.
+element -file /vobs/dpl/classes1/idMasters/src/flashJumpTableRoutineList /main/clyde/LATEST
+element -file /vobs/dpl/buildTDS/build/Makefile         /main/LATEST
+element -file /vobs/dpl/buildTDS/build/Makefile.build   /main/LATEST
+# Comment the next 1 line for 020.  /orca in next line, to have orca in GPIB grammar:
+element -file /vobs/dpl/classes1/makeTemplates/makeInstrument /main/columbia_040/orca/LATEST
+# ORCA???: hughe vs orca in the following?
+element -file /vobs/dpl/classes1/makeTemplates/makeInstrument /main/hughe/LATEST
+element -file /vobs/dpl/classes1/makeTemplates/...       /main/LATEST
+element -file /vobs/dpl/classes1/idMasters/src/producerMasterList   /main/orca/LATEST
+element -file /vobs/dpl/classes1/idMasters/...   /main/LATEST
+element -file /vobs/dpl/commands2/smalltalk/fonts/...    /main/LATEST
+element -file /vobs/dpl/buildTDS/cscope/... /main/LATEST
+
+# Need to override the default search order to force a specific branch
+# or version for the following
+element -file /vobs/dpl/strl/... /main/LATEST
+element -dir /vobs/dpl/strl/... /main/LATEST
+element -file /vobs/dpl/classes1/applications/Measurements/WaveformMeasurer/...  /main/LATEST
+element -dir /vobs/dpl/classes1/applications/Measurements/WaveformMeasurer/...  /main/LATEST
+element -file .../includes/net.h /main/LATEST
+element -file .../includes/schedulerPublicCmds.h /main/LATEST
+
+#default search order:
+
+# Comment the next 1 line for 020
+element       * /main/columbia_040/LATEST
+
+# To use this configSpec to do a build for Hughe HW,
+# comment out the following three lines:
+
+element       * /main/orca/LATEST
+element       * /main/clyde/orca/LATEST
+element       * /main/columbia/orca/LATEST
+
+element       * /main/hughe/LATEST
+element       * /main/columbia/hughe/LATEST
+
+element       * /main/clyde/LATEST
+element       * /main/columbia/clyde/LATEST
+
+element       * /main/columbia/LATEST
+
+element       * /main/LATEST"	0506c517	string	12481
