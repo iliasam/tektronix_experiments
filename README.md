@@ -3,7 +3,8 @@ Results of my experiments with TDS540D oscilloscope
 
 You can find here source code and object file for Tetris for TDS5XX oscilloscope  
 <img src="https://github.com/iliasam/tektronix_experiments/blob/main/main_photo.jpg" width="600"> 
-
+  
+See this video: https://youtu.be/ZGMtFY54rTQ  
 
 Information from FW and OS:  
 
