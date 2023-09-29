@@ -1,5 +1,6 @@
 # tektronix_experiments
-Results of my experiments with TDS540D oscilloscope
+Results of my experiments with TDS540D oscilloscope  
+See this article: https://habr.com/ru/articles/763384/  
 
 You can find here source code and object file for Tetris for TDS5XX oscilloscope  
 <img src="https://github.com/iliasam/tektronix_experiments/blob/main/main_photo.jpg" width="600"> 
