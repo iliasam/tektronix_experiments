@@ -9,7 +9,7 @@ See this video: https://youtu.be/ZGMtFY54rTQ
 
 Information from FW and OS:  
 
-FW version: 6.2.1e 1991-1998
+FW version: 6.2.1e 1991-1998 (you can find it in this repo)  
 
 Smalltalk/V Sun Version 1.12  
 Copyright (C) 1990 Object Technology International Inc.  
